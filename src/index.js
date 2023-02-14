@@ -4,7 +4,7 @@ import server from "./server.js"
 
 const port = process.env.PORT || 3001
 
-mongoose.connect(process.env.MONGO_URL)
+mongoose.connect(process.env.MONGO_URL_TEST)
 
 mongoose.connection.on("connected", () => {
   server.listen(port, () => {
