@@ -22,4 +22,13 @@ productsRouter.post("/", async (req, res, next) => {
   }
 })
 
+productsRouter.get("/:productId", async (req, res, next) => {
+  try {
+    const product = await ProductsModel.findById(req.params.productId)
+    res.send(product)
+  } catch (error) {
+    next(error)
+  }
+})
+
 export default productsRouter
