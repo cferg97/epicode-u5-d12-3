@@ -25,8 +25,6 @@ const client = supertest(server);
 })
  */
 
-let ID;
-
 const validProduct = {
   name: "A valid product",
   description: "balllablalblabl",
@@ -37,6 +35,8 @@ const notValidProduct = {
   name: "A not valid product",
   price: 100,
 };
+
+let ID;
 
 beforeAll(async () => {
   await mongoose.connect(process.env.MONGO_URL_TEST);
@@ -97,6 +97,12 @@ describe("Test APIs", () => {
     expect(response.body.name !== originalResp.body.name);
     expect(typeof response.body.name).toBe("string");
   });
+
+  //test if request has authorization headers
+
+  //test if authorization headers are valid
+
+  //test if user is authorized to access endpoint
 
   it("Should test that DELETEing /products/:id returns a 204 on success", async () => {
     await client.delete(`/products/${ID}`).expect(204);
